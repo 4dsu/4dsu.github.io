@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4dsu.me - Web Personal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #212529;
+    }
+    header {
+      background: #343a40;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    nav {
+      text-align: center;
+      margin: 15px 0;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #343a40;
+      font-weight: bold;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    footer {
+      background: #343a40;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Benvingut a 4dsu.me</h1>
+  <p>Web personal de 4dsu</p>
+</header>
+
+<nav>
+  <a href="#about">Sobre mi</a>
+  <a href="#projects">Projectes</a>
+  <a href="#contact">Contacte</a>
+</nav>
+
+<section id="about">
+  <h2>Sobre mi</h2>
+  <p>
+    Sóc desenvolupador web principiant amb ganes d’aprendre i crear projectes propis.
+    Aquí trobaràs algunes de les meves idees, projectes i informacions de contacte.
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Projectes</h2>
+  <p>Tinc diversos projectes en camí. Per ara, aquí tens alguns exemples:</p>
+  <ul>
+    <li>Projecte 1: Pàgina de presentació personal</li>
+    <li>Projecte 2: Blog estàtic amb GitHub Pages</li>
+    <li>Projecte 3: Aplicació web d'aprenentatge</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contacte</h2>
+  <p>Si vols contactar amb mi, pots enviar-me un missatge.</p>
+  <button class="btn" onclick="showEmail()">Mostra el meu correu</button>
+  <p id="email" style="margin-top:15px; font-weight:bold;"></p>
+</section>
+
+<footer>
+  <p>&copy; 2026 4dsu.me. Tots els drets reservats.</p>
+</footer>
+
+<script>
+  function showEmail() {
+    document.getElementById("email").textContent = "contacte@4dsu.me";
+  }
+</script>
