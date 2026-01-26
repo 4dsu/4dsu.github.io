@@ -3,99 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4dsu.me - Web Personal</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #212529;
-    }
-    header {
-      background: #343a40;
-      padding: 20px;
-      text-align: center;
-      color: #fff;
-    }
-    nav {
-      text-align: center;
-      margin: 15px 0;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #343a40;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .btn {
-      background: #007bff;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-    footer {
-      background: #343a40;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+  <title>4dsu.me — Estudiant d'Enginyeria</title>
+  <meta name="description" content="Lloc personal de 4dsu. Estudiant d'enginyeria de telecomunicacions, programació en C i productivitat.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="4dsu.me — Estudiant d'Enginyeria">
+  <meta property="og:description" content="Lloc personal de 4dsu. Estudiant d'enginyeria de telecomunicacions, programació en C i productivitat.">
+  <meta property="og:url" content="https://www.4dsu.me/">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="4dsu.me — Estudiant d'Enginyeria">
+  <meta name="twitter:description" content="Lloc personal de 4dsu. Estudiant d'enginyeria de telecomunicacions, programació en C i productivitat.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
 </head>
 <body>
-
-<header>
-  <h1>Benvingut a 4dsu.me</h1>
-  <p>Web personal de 4dsu</p>
-</header>
-
-<nav>
-  <a href="#about">Sobre mi</a>
-  <a href="#projects">Projectes</a>
-  <a href="#contact">Contacte</a>
-</nav>
-
-<section id="about">
-  <h2>Sobre mi</h2>
-  <p>
-    Sóc desenvolupador web principiant amb ganes d’aprendre i crear projectes propis.
-    Aquí trobaràs algunes de les meves idees, projectes i informacions de contacte.
-  </p>
-</section>
-
-<section id="projects">
-  <h2>Projectes</h2>
-  <p>Tinc diversos projectes en camí. Per ara, aquí tens alguns exemples:</p>
-  <ul>
-    <li>Projecte 1: Pàgina de presentació personal</li>
-    <li>Projecte 2: Blog estàtic amb GitHub Pages</li>
-    <li>Projecte 3: Aplicació web d'aprenentatge</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contacte</h2>
-  <p>Si vols contactar amb mi, pots enviar-me un missatge.</p>
-  <button class="btn" onclick="showEmail()">Mostra el meu correu</button>
-  <p id="email" style="margin-top:15px; font-weight:bold;"></p>
-</section>
-
-<footer>
-  <p>&copy; 2026 4dsu.me. Tots els drets reservats.</p>
-</footer>
-
-<script>
-  function showEmail() {
-    document.getElementById("email").textContent = "contacte@4dsu.me";
-  }
-</script>
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Salta al contingut principal</a>
+  
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">4dsu.me</a>
+      <nav class="nav">
+        <a href="#about">Sobre mi</a>
+        <a href="#projects">Projectes</a>
+        <a href="#contact">Contacte</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Main -->
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>Hola, sóc 4dsu</h1>
+        <p class="muted">Estudiant d'enginyeria, entusiasta de la tecnologia.</p>
+        <a href="#projects" class="btn">Veure projectes</a>
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Sobre mi</h2>
+        <p>Sóc estudiant d'enginyeria de telecomunicacions. M'apassiona entendre com funcionen les coses i construir solucions útils.</p>
+        <ul>
+          <li><strong>Telecomunicacions:</strong> xarxes, senyals i sistemes.</li>
+          <li><strong>Programació en C:</strong> codi eficient i proper al maquinari.</li>
+          <li><strong>Productivitat:</strong> eines i mètodes per treballar millor.</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projectes</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Projecte Alpha</h3>
+            <p class="muted">Descripció breu del projecte. Tecnologies usades i objectiu principal.</p>
+            <a href="https://github.com/4dsu/projecte-alpha" class="btn-secondary" target="_blank" rel="noopener">Veure a GitHub</a>
+          </article>
+          <article class="card">
+            <h3>Projecte Beta</h3>
+            <p class="muted">Descripció breu del projecte. Tecnologies usades i objectiu principal.</p>
+            <a href="https://github.com/4dsu/projecte-beta" class="btn-secondary" target="_blank" rel="noopener">Veure a GitHub</a>
+          </article>
+          <article class="card">
+            <h3>Projecte Gamma</h3>
+            <p class="muted">Descripció breu del projecte. Tecnologies usades i objectiu principal.</p>
+            <a href="https://github.com/4dsu/projecte-gamma" class="btn-secondary" target="_blank" rel="noopener">Veure a GitHub</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contacte</h2>
+        <p>Tens alguna pregunta o proposta? Escriu-me.</p>
+        <button id="show-email" class="btn">Mostra el meu correu</button>
+        <p id="email"></p>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© 2026 4dsu.me</p>
+    </div>
+  </footer>
+</body>
+</html>
