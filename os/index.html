@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4dsu.me — 4dsu OS // Portfolio Personal</title>
+  <meta name="description" content="Portfolio personal de 4dsu presentat com un sistema operatiu retro propi. Explora projectes d'enginyeria, perfil, notes i contacte de manera interactiva o lineal.">
+  <link rel="canonical" href="https://www.4dsu.me/os/">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0c0e">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.4dsu.me/os/">
+  <meta property="og:title" content="4dsu.me — 4dsu OS // Portfolio Personal">
+  <meta property="og:description" content="Portfolio personal de 4dsu presentat com un sistema operatiu retro propi. Explora projectes d'enginyeria, perfil, notes i contacte.">
+  <meta property="og:site_name" content="4dsu.me">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="4dsu.me — 4dsu OS // Portfolio Personal">
+  <meta name="twitter:description" content="Portfolio personal de 4dsu presentat com un sistema operatiu retro propi. Explora projectes d'enginyeria, perfil, notes i contacte.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Tipografia de píxel local (sense xarxes externes) -->
+  <link rel="preload" href="assets/fonts/silkscreen-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/silkscreen-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Main Application Script (ES Module) -->
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <!-- Enllaços de salt per a lectors de pantalla i navegació per teclat -->
+  <a href="#linear-content" class="skip-link">Salta directament a la vista lineal accessible</a>
+  <a href="#desktop-workspace" class="skip-link">Salta a l'espai de l'escriptori</a>
+
+  <!-- Regió ARIA en viu per anunciar canvis d'estat a lectors de pantalla -->
+  <div id="live-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ======================================================================
+       PANTALLA DEL SISTEMA 4DSU
+       Aurora: barra de menús superior, escriptori i Dock
+       ====================================================================== -->
+  <div id="hardware-chassis" class="os-screen">
+
+    <!-- ======================================================================
+         PANTALLA D'ARRENCADA / POST (curta, saltable amb Escape)
+         ====================================================================== -->
+    <div id="boot-screen" class="boot-screen" role="region" aria-label="Seqüència d'arrencada del sistema" data-boot-state="idle">
+      <div class="boot-container">
+        <header class="boot-bios-bar">
+          <span class="boot-bios-title">4DSU // ARRENCADA DEL SISTEMA</span>
+          <span class="boot-bios-meta">AURORA</span>
+        </header>
+
+        <div class="boot-main">
+          <div class="boot-icon-wrap" aria-hidden="true">
+            <svg class="boot-core-symbol" viewBox="0 0 24 24" width="96" height="96" shape-rendering="crispEdges" aria-hidden="true">
+              <rect x="11" y="1" width="2" height="2" fill="#4d8ce0" />
+              <rect x="11" y="3" width="2" height="2" fill="#2a2d33" />
+              <rect x="10" y="5" width="4" height="1" fill="#3a3d45" />
+              <rect x="4" y="6" width="16" height="1" fill="#3a3d45" />
+              <rect x="4" y="7" width="1" height="10" fill="#3a3d45" />
+              <rect x="19" y="7" width="1" height="10" fill="#000000" />
+              <rect x="4" y="17" width="16" height="1" fill="#000000" />
+              <rect x="5" y="7" width="14" height="10" fill="#1e2024" />
+              <rect x="6" y="8" width="12" height="7" fill="#0c0e10" />
+              <rect x="6" y="8" width="12" height="1" fill="#000000" />
+              <rect x="6" y="8" width="1" height="7" fill="#000000" />
+              <rect x="8" y="10" width="2" height="2" fill="#4d8ce0" />
+              <rect x="8" y="10" width="1" height="1" fill="#7fb0f0" />
+              <rect x="14" y="10" width="2" height="2" fill="#4d8ce0" />
+              <rect x="14" y="10" width="1" height="1" fill="#7fb0f0" />
+              <rect x="11" y="13" width="2" height="1" fill="#2c5a96" />
+              <rect x="5" y="18" width="3" height="2" fill="#2a2d33" />
+              <rect x="5" y="20" width="3" height="1" fill="#000000" />
+              <rect x="16" y="18" width="3" height="2" fill="#2a2d33" />
+              <rect x="16" y="20" width="3" height="1" fill="#000000" />
+            </svg>
+          </div>
+
+          <div class="boot-terminal">
+            <p id="boot-text" class="boot-brand">4DSU // PORTFOLI PERSONAL</p>
+            <div id="boot-log" class="boot-log">
+              <p class="boot-line"><span class="boot-key">CPU</span><span class="boot-val">NUCLI 4DSU @ 133 MHZ</span><span class="boot-ok">OK</span></p>
+              <p class="boot-line"><span class="boot-key">RAM</span><span class="boot-val">64 MB VERIFICATS</span><span class="boot-ok">OK</span></p>
+              <p class="boot-line"><span class="boot-key">VIDEO</span><span class="boot-val">AURORA 32 BITS 1440x900</span><span class="boot-ok">OK</span></p>
+              <p class="boot-line"><span class="boot-key">DISC</span><span class="boot-val">MUNTANT PORTFOLIO_FS 1.2 GB</span><span class="boot-ok">OK</span></p>
+              <p class="boot-line boot-cursor"><span class="boot-key">INIT</span><span class="boot-val">CARREGANT ESCRIPTORI</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="boot-progress-bar" aria-hidden="true">
+          <div id="boot-progress-fill" class="boot-progress-fill"></div>
+        </div>
+
+        <div class="boot-footer">
+          <span class="boot-hint" aria-hidden="true">CONTINGUT LOCAL // CAP DADA EXTERNA</span>
+          <button type="button" id="boot-skip-btn" class="sys-btn boot-skip-btn" data-alias="btn-skip-boot" aria-label="Saltar seqüència d'arrencada">
+            <span>Saltar [ESC]</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         SHELL DE L'ESCRIPTORI
+         ====================================================================== -->
+    <div id="desktop-shell" class="desktop-shell">
+
+      <!-- ======================================================================
+           BARRA DE MENÚS SUPERIOR
+           Botó 4dsu + menú de sistema, finestres obertes i safata de sistema
+           ====================================================================== -->
+      <header id="taskbar" class="menu-bar" aria-label="Barra de menús del sistema">
+
+        <div id="menubar" class="taskbar-start" role="none">
+          <button type="button"
+                  id="btn-system-menu"
+                  class="menubar-trigger taskbar-start-btn"
+                  data-menu-id="4dsu"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="system-menu-dropdown"
+                  aria-label="Menú d'inici del sistema 4DSU">
+            <span class="taskbar-start-icon" aria-hidden="true">
+              <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M7 1h2v2H7V1zm-4 4h10v7H3V5zm2 2v2h2V7H5zm4 0v2h2V7H9zm-3 3h4v1H6v-1zm-2 3h2v1H4v-1zm6 0h2v1h-2v-1z"/></svg>
+            </span>
+            <span class="taskbar-start-label">4DSU</span>
+          </button>
+
+          <div id="system-menu-dropdown"
+               class="menubar-dropdown system-menu-dropdown start-menu"
+               data-menu-id="4dsu"
+               role="menu"
+               aria-labelledby="btn-system-menu"
+               hidden>
+            <div class="start-menu-header" aria-hidden="true">
+              <span class="start-menu-header-title">4DSU OS V1.0</span>
+              <span class="start-menu-header-stripes"></span>
+            </div>
+
+            <div class="start-menu-columns" role="none">
+              <div class="start-menu-group" role="group" aria-label="Programes">
+                <span class="start-menu-heading" aria-hidden="true">Programes</span>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="welcome">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M7 1h2v2H7V1zm-3 3h2v2H4V4zm6 0h2v2h-2V4zm-3 1h2v6H7V5zm-4 2h2v2H3V7zm10 0h2v2h-2V7zm-7 3h2v2H6v-2zm4 0h2v2h-2v-2zm-3 3h2v2H7v-2z"/></svg></span>
+                  <span class="menubar-item-text">BENVINGUDA.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="about">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M6 2h4v4H6V2zm-2 5h8v2H4V7zm-2 3h12v4H2v-4zm2 2h8v2H4v-2z"/></svg></span>
+                  <span class="menubar-item-text">ABOUT.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="projects">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 3h5l2 2h7v9H1V3zm2 3h10v6H3V6z"/></svg></span>
+                  <span class="menubar-item-text">PROJECTS/</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="lab">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M5 1h6v1h-1v3h1v1h1v1h1v2h1v4H2v-4h1V9h1V7h1V6h1V2H5V1zm2 3v3H6v1H5v2h6v-2h-1V7h-1V4H7zm-3 8h8v1H4v-1z"/></svg></span>
+                  <span class="menubar-item-text">LAB/</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="photos">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M4 3h2l1-2h2l1 2h2l2 2v9H2V5l2-2zm1 4h6v5H5V7zm1 1v3h4V8H6zm5-3h2v1h-2V5z"/></svg></span>
+                  <span class="menubar-item-text">PHOTO_PORTFOLIO/</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="cv">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M2 1h12v14H2V1zm2 2v10h8V3H4zm1 2h3v3H5V5zm4 1h2v1H9V6zm0 2h2v1H9V8zM5 9h6v1H5V9zm0 2h6v1H5v-1z"/></svg></span>
+                  <span class="menubar-item-text">CV.PDF</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="notes">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M2 1h10v14H2V1zm2 2v10h6V3H4zm1 2h4v1H5V5zm0 2h4v1H5V7zm0 2h4v1H5V9zm6-6h2v12h-2V3z"/></svg></span>
+                  <span class="menubar-item-text">NOTES.TXT</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="emkenia">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M2 14V4h4V2h4v2h4v10H2zm2-8v2h2V6H4zm0 4v2h2v-2H4zm4-4v2h2V6H8zm0 4v2h2v-2H8zm4-4v2h2V6h-2zm0 4v2h2v-2h-2zM7 12h2v2H7v-2z"/></svg></span>
+                  <span class="menubar-item-text">EMKENIA.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="contact">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 3h14v10H1V3zm2 2v1l5 4 5-4V5H3zm0 2v4h10V7l-5 4-5-4z"/></svg></span>
+                  <span class="menubar-item-text">CONTACT.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="mail">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 3h14v10H1V3zm2 2v1l5 4 5-4V5H3zm0 2v4h10V7l-5 4-5-4zM6 1h4v1H6V1z"/></svg></span>
+                  <span class="menubar-item-text">MAIL.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="browser">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 2h14v12H1V2zm2 2v2h10V4H3zm0 4v4h10V8H3zm1 1h2v2H4V9zm4 0h4v1H8V9z"/></svg></span>
+                  <span class="menubar-item-text">BROWSER.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="files">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 3h5l2 2h7v9H1V3zm2 3v6h10V7H7L5 6H3zM4 1h4v1H4V1z"/></svg></span>
+                  <span class="menubar-item-text">FILES.EXE</span>
+                </button>
+              </div>
+
+              <div class="start-menu-group start-menu-group-system" role="group" aria-label="Sistema">
+                <span class="start-menu-heading" aria-hidden="true">Sistema</span>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="switch-linear">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M2 2h12v3H2V2zm0 5h12v3H2V7zm0 5h12v3H2v-3z"/></svg></span>
+                  <span class="menubar-item-text">Vista lineal accessible</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="search">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M5 1h4v1h2v2h1v4h-1v2h-2v1H5v-1H3v-2H2V4h1V2h2V1zm-1 3v4h1v1h4V8h1V4h-1V3H5v1H4zm7 6h2v2h-2v-2zm1 2h2v2h-2v-2zm1 2h2v2h-2v-2z"/></svg></span>
+                  <span class="menubar-item-text">Cerca global</span>
+                  <span class="menubar-shortcut" aria-hidden="true">SEARCH.EXE</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="sysprops">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M1 2h14v9H1V2zm2 2v5h10V4H3zm4 8h2v1H7v-1zm-3 2h8v1H4v-1z"/></svg></span>
+                  <span class="menubar-item-text">Especificacions</span>
+                </button>
+                <span class="menubar-separator" role="separator"></span>
+                <button type="button" id="menu-btn-toggle-mascot" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="toggle-mascot" aria-pressed="false">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M7 1h2v2H7V1zm-4 4h10v7H3V5zm2 2v2h2V7H5zm4 0v2h2V7H9zm-3 3h4v1H6v-1zm-2 3h2v1H4v-1zm6 0h2v1h-2v-1z"/></svg></span>
+                  <span class="menubar-item-text">Mascota: OFF</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="minimize-active">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="11" width="10" height="3"/></svg></span>
+                  <span class="menubar-item-text">Minimitzar finestra activa</span>
+                </button>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="close-all">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M2 2h3v2h2v2h2V4h2V2h3v3h-2v2h-2v2h2v2h2v3h-3v-2H9v-2H7v2H5v2H2v-3h2v-2h2V9H4V7H2V2z"/></svg></span>
+                  <span class="menubar-item-text">Tancar totes les finestres</span>
+                </button>
+                <span class="menubar-separator" role="separator"></span>
+                <button type="button" class="menubar-item menu-item-btn" role="menuitem" data-menu-action="restart">
+                  <span class="menubar-item-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges"><path d="M7 1h2v6H7V1zM4 3v2H3v6h10V5h-1V3h1v1h1v8H2V4h1V3h1z"/></svg></span>
+                  <span class="menubar-item-text">Reiniciar sistema</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finestres obertes (renderitzades pel WindowManager) -->
+        <div id="taskbar-windows" class="taskbar-windows-list" role="group" aria-label="Finestres obertes"></div>
+
+        <!-- Safata de sistema -->
+        <div class="taskbar-tray" role="group" aria-label="Àrea d'estat del sistema">
+          <button type="button"
+                  id="btn-toggle-mascot"
+                  class="sys-btn tray-btn taskbar-mascot-btn"
+                  aria-pressed="false"
+                  aria-label="Activar o desactivar mascota DSU.EXE">
+            <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M7 1h2v2H7V1zm-4 4h10v7H3V5zm2 2v2h2V7H5zm4 0v2h2V7H9zm-3 3h4v1H6v-1zm-2 3h2v1H4v-1zm6 0h2v1h-2v-1z"/></svg>
+            <span class="btn-text-label tray-btn-label">Mascota: OFF</span>
+          </button>
+
+          <button type="button"
+                  id="btn-toggle-view"
+                  class="sys-btn tray-btn"
+                  aria-label="Canviar a vista lineal accessible">
+            <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 2h12v3H2V2zm0 5h12v3H2V7zm0 5h12v3H2v-3z"/></svg>
+            <span class="btn-text-label tray-btn-label">Vista accessible</span>
+          </button>
+
+          <div class="tray-status">
+            <span id="hw-led" class="tray-led" role="status" aria-label="Indicador d'activitat del sistema"></span>
+            <time id="taskbar-clock" class="taskbar-clock" aria-label="Rellotge del sistema">--:--</time>
+          </div>
+
+          <button type="button" id="hw-power-btn" class="tray-power-btn" aria-label="Reiniciar 4dsu OS" title="Reiniciar 4dsu OS">
+            <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+              <rect x="7" y="1" width="2" height="6"/>
+              <rect x="4" y="4" width="2" height="2"/>
+              <rect x="10" y="4" width="2" height="2"/>
+              <rect x="3" y="6" width="2" height="6"/>
+              <rect x="11" y="6" width="2" height="6"/>
+              <rect x="5" y="12" width="6" height="2"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Espai de treball: icones + finestres -->
+      <main id="desktop-workspace" class="desktop-workspace" aria-label="Espai de treball de l'escriptori">
+
+        <!-- Marca d'estat discreta de la màquina -->
+        <div class="desktop-status-overlay" aria-hidden="true">
+          <span>4DSU WORKSTATION // READY</span>
+        </div>
+
+        <!-- Icones de l'escriptori: disc, dues carpetes i paperera.
+             La resta d'aplicacions viuen al Dock i a la barra lateral del Finder. -->
+        <nav id="desktop-icons" class="desktop-icons-area" aria-label="Icones de l'escriptori">
+          <div class="desktop-icons-grid">
+            <button type="button" class="desktop-icon" data-open-app="welcome" aria-label="Obrir el disc del sistema (4DSU_HD)">
+              <span class="icon-graphic" aria-hidden="true">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="32" height="32" fill="currentColor" shape-rendering="crispEdges"><path d="M7 1h2v2H7V1zm-3 3h2v2H4V4zm6 0h2v2h-2V4zm-3 1h2v6H7V5zm-4 2h2v2H3V7zm10 0h2v2h-2V7zm-7 3h2v2H6v-2zm4 0h2v2h-2v-2zm-3 3h2v2H7v-2z"/></svg>
+              </span>
+              <span class="icon-label">4DSU_HD</span>
+            </button>
+
+            <button type="button" class="desktop-icon" data-open-app="projects" aria-label="Obrir directori de projectes (PROJECTS/)">
+              <span class="icon-graphic" aria-hidden="true">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="32" height="32" fill="currentColor" shape-rendering="crispEdges"><path d="M1 3h5l2 2h7v9H1V3zm2 3h10v6H3V6z"/></svg>
+              </span>
+              <span class="icon-label">PROJECTS/</span>
+            </button>
+
+            <button type="button" class="desktop-icon" data-open-app="photos" aria-label="Obrir carpeta de fotografia (PHOTO_PORTFOLIO/)">
+              <span class="icon-graphic" aria-hidden="true">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="32" height="32" fill="currentColor" shape-rendering="crispEdges"><path d="M4 3h2l1-2h2l1 2h2l2 2v9H2V5l2-2zm1 4h6v5H5V7zm1 1v3h4V8H6zm5-3h2v1h-2V5z"/></svg>
+              </span>
+              <span class="icon-label">PHOTO_<wbr>PORTFOLIO/</span>
+            </button>
+
+            <button type="button" class="desktop-icon desktop-icon-trash" id="icon-trash" data-open-app="trash" aria-label="Obrir Paperera (TRASH)">
+              <span class="icon-graphic" aria-hidden="true">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="32" height="32" fill="currentColor" shape-rendering="crispEdges"><path d="M6 1h4v1H6V1zM2 3h12v2H2V3zm1 3h1v8h8V6h1v9H3V6zm3 2h1v5H6V8zm3 0h1v5H9V8z"/></svg>
+              </span>
+              <span class="icon-label">TRASH</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Contenidor dinàmic per a les finestres obertes -->
+        <div id="window-workspace" class="window-workspace-inner" aria-label="Finestres actives"></div>
+
+        <!-- Dock: flota sobre l'espai de treball i no en redueix la caixa.
+             Els elements els genera src/dock.js a partir del registre. -->
+        <nav id="dock" class="dock" aria-label="Dock d'aplicacions"></nav>
+
+      </main>
+
+
+    </div> <!-- /.desktop-shell -->
+  </div> <!-- /#hardware-chassis -->
+
+  <!-- Fallback semàntic en cas que JavaScript estigui desactivat -->
+  <noscript>
+    <style>
+      #hardware-chassis, #desktop-shell, #boot-screen, #taskbar { display: none !important; }
+      #linear-view[hidden], #linear-view { display: block !important; }
+      body { overflow-y: auto !important; height: auto !important; min-height: 100%; display: block !important; }
+      .btn-switch-desktop { display: none !important; }
+      .no-js-banner {
+        background-color: var(--os-amber);
+        color: var(--os-amber-ink);
+        padding: 10px 16px;
+        font-family: var(--font-pixel);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 2px solid var(--os-void);
+      }
+    </style>
+    <div class="no-js-banner" role="status">
+      [4DSU-OS] Mode de text complet accessible actiu (sense JavaScript). Tot el contingut del portfolio és disponible a continuació.
+    </div>
+  </noscript>
+
+  <div id="linear-view" class="linear-view" hidden>
+    <!-- os-dades:vista-lineal (generat per scripts/os-dades.mjs) -->
+<header class="linear-header" role="banner">
+      <div class="linear-container">
+        <div class="linear-brand">
+          <span class="linear-logo" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M1 2h14v9H1V2zm2 2v5h10V4H3zm4 8h2v1H7v-1zm-3 2h8v1H4v-1z"/></svg> 4DSU OS // LECTURA</span>
+          <div>
+            <h1 class="linear-site-title">4dsu.me</h1>
+            <p class="linear-site-tagline">L'ordinador vell de l'illa de 4dsu</p>
+          </div>
+        </div>
+        <div class="linear-controls">
+          <button type="button" class="sys-btn sys-btn-primary btn-switch-desktop" id="btn-return-desktop">
+            <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1 2h14v9H1V2zm2 2v5h10V4H3zm4 8h2v1H7v-1zm-3 2h8v1H4v-1z"/></svg> Tornar a l'escriptori
+          </button>
+        </div>
+      </div>
+      <nav class="linear-nav" aria-label="Navegació de la vista lineal">
+        <div class="linear-container">
+          <ul class="linear-nav-list" role="list">
+            <li><a href="#linear-welcome" class="linear-nav-link" aria-current="location"><span class="nav-idx">[01]</span> Inici</a></li>
+            <li><a href="#linear-about" class="linear-nav-link"><span class="nav-idx">[02]</span> Sobre mi</a></li>
+            <li><a href="#linear-projects" class="linear-nav-link"><span class="nav-idx">[03]</span> Projectes</a></li>
+            <li><a href="#linear-cv" class="linear-nav-link"><span class="nav-idx">[04]</span> Currículum</a></li>
+            <li><a href="#linear-notes" class="linear-nav-link"><span class="nav-idx">[05]</span> Notes</a></li>
+            <li><a href="#linear-contact" class="linear-nav-link"><span class="nav-idx">[06]</span> Contacte</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="linear-main" id="linear-content" tabindex="-1">
+      <div class="linear-container">
+        
+        <!-- Benvinguda / Pitch de 10 segons -->
+        <section id="linear-welcome" class="linear-section linear-sys-panel linear-hero" aria-labelledby="linear-welcome-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">README.TXT</span>
+            <span class="linear-panel-meta">GUIA_INICI // 4dsu OS</span>
+          </div>
+          <div class="linear-panel-body">
+            <h2 id="linear-welcome-title" class="linear-hero-title">Hola, sóc 4dsu.</h2>
+            <p class="linear-hero-pitch">Aquest és l'ordinador vell de l'illa. Abans que hi hagués l'illa, el portfolio era aquest escriptori: encara funciona i té el mateix contingut.</p>
+            <p class="linear-hero-subtext">Obre les aplicacions de l'escriptori o canvia a la vista lineal quan vulguis. Si has entrat des de l'illa, Esc et torna a fora.</p>
+            <div class="linear-hero-actions">
+              <a href="#linear-projects" class="sys-btn sys-btn-primary">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1 3h5l2 2h7v9H1V3zm2 3h10v6H3V6z"/></svg> Explorar projectes
+              </a>
+              <a href="#linear-about" class="sys-btn">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6 2h4v4H6V2zm-2 5h8v2H4V7zm-2 3h12v4H2v-4zm2 2h8v2H4v-2z"/></svg> Llegir perfil
+              </a>
+              <a href="#linear-contact" class="sys-btn">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1 3h14v10H1V3zm2 2v1l5 4 5-4V5H3zm0 2v4h10V7l-5 4-5-4z"/></svg> Contactar
+              </a>
+            </div>
+
+            <aside class="linear-mascot-callout" aria-label="Assistent de conversa DSU.EXE">
+              <p class="linear-mascot-pitch">Vols fer preguntes interactives sobre el portfolio al procés resident DSU.EXE?</p>
+              <button type="button" class="sys-btn sys-btn-primary" data-mascot-action="talk">
+                <svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1 2h14v9H1V2zm2 2v5h10V4H3zm4 8h2v1H7v-1zm-3 2h8v1H4v-1z"/></svg> Parlar amb la mascota (DSU.EXE)
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Sobre mi -->
+        <section id="linear-about" class="linear-section linear-sys-panel" aria-labelledby="linear-about-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">ABOUT.EXE</span>
+            <span class="linear-panel-meta">[■ NOMÉS LECTURA]</span>
+          </div>
+          <div class="linear-panel-body">
+            <div class="linear-section-title-wrap">
+              <h2 id="linear-about-title" class="linear-section-title">ABOUT.EXE — Sobre 4dsu</h2>
+              <p class="linear-lead-role">Estudiant d'Enginyeria de Telecomunicacions</p>
+            </div>
+            
+            <div class="linear-prose">
+              <p>Sóc estudiant d'enginyeria de telecomunicacions. M'apassiona entendre com funcionen les coses a fons: des del maquinari i les xarxes fins al programari eficient i les eines personals.</p><p>M'interessa especialment la programació de sistemes, el codi predictible i la creació d'eines que resolguin problemes concrets sense complicacions innecessàries.</p>
+            </div>
+
+            <div class="linear-subblock">
+              <h3 class="linear-subheading">Pilars d'interès tècnic</h3>
+              <div class="linear-grid-pillars">
+                
+                  <div class="linear-pillar-box">
+                    <h4 class="linear-pillar-title">Telecomunicacions</h4>
+                    <p class="linear-pillar-body">Xarxes de dades, arquitectures de transmissió, senyals i fonaments de sistemes distribuïts.</p>
+                  </div>
+                
+                  <div class="linear-pillar-box">
+                    <h4 class="linear-pillar-title">Programació en C i sistemes</h4>
+                    <p class="linear-pillar-body">Codi eficient, gestió explícita de memòria i programació propera a la màquina.</p>
+                  </div>
+                
+                  <div class="linear-pillar-box">
+                    <h4 class="linear-pillar-title">Eines i productivitat</h4>
+                    <p class="linear-pillar-body">Disseny de fluxos de treball, automatització d'enginyeria i interfícies funcionals.</p>
+                  </div>
+                
+              </div>
+            </div>
+
+            <div class="linear-subblock">
+              <h3 class="linear-subheading">Principis de treball</h3>
+              <ul class="linear-principles-list">
+                <li><span class="linear-bullet" aria-hidden="true">[▶]</span> <span>Joc a la superfície, clar i llegible a l'interior.</span></li><li><span class="linear-bullet" aria-hidden="true">[▶]</span> <span>Explicar el problema i les decisions abans que la llista de tecnologies.</span></li><li><span class="linear-bullet" aria-hidden="true">[▶]</span> <span>Accessibilitat i rendiment com a requisits bàsics, no com a afegits.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projectes -->
+        <section id="linear-projects" class="linear-section linear-sys-panel" aria-labelledby="linear-projects-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">PROJECTS/</span>
+            <span class="linear-panel-meta">0 FITXERS // EN OBRES</span>
+          </div>
+          <div class="linear-panel-body">
+            <div class="linear-section-title-wrap">
+              <h2 id="linear-projects-title" class="linear-section-title">PROJECTS/ — Projectes</h2>
+              <p class="linear-lead-role">Projectes de 4dsu: el problema, què vaig fer i com va acabar.</p>
+            </div>
+
+            
+              <div class="linear-empty-state">
+                <div class="linear-empty-header">
+                  <span class="linear-empty-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M1 3h5l2 2h7v9H1V3zm2 3h10v6H3V6z"/></svg></span>
+                  <div>
+                    <h3 class="linear-empty-title">Carpeta en obres</h3>
+                    <span class="sys-tag sys-tag-success">0 FITXERS // EN OBRES</span>
+                  </div>
+                </div>
+                <p class="linear-empty-message">Aquesta part encara s'està preparant. No hi posaré res inventat: quan hi hagi contingut real, apareixerà aquí.</p>
+                <div class="linear-empty-actions">
+                  <a href="#linear-about" class="sys-btn"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6 2h4v4H6V2zm-2 5h8v2H4V7zm-2 3h12v4H2v-4zm2 2h8v2H4v-2z"/></svg> Sobre mi</a>
+                  <a href="#linear-cv" class="sys-btn"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M2 1h12v14H2V1zm2 2v10h8V3H4zm1 2h3v3H5V5zm4 1h2v1H9V6zm0 2h2v1H9V8zM5 9h6v1H5V9zm0 2h6v1H5v-1z"/></svg> Currículum</a>
+                  <a href="#linear-contact" class="sys-btn"><svg class="sys-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1 3h14v10H1V3zm2 2v1l5 4 5-4V5H3zm0 2v4h10V7l-5 4-5-4z"/></svg> Contactar</a>
+                </div>
+              </div>
+            
+          </div>
+        </section>
+
+        <!-- Currículum -->
+        <section id="linear-cv" class="linear-section linear-sys-panel linear-doc-paper" aria-labelledby="linear-cv-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">CV.PDF</span>
+            <span class="linear-panel-meta">PERFIL CURRICULAR</span>
+          </div>
+          <div class="linear-paper-sheet">
+            <div class="linear-cv-header">
+              <div class="linear-cv-title-block">
+                <h2 id="linear-cv-title" class="linear-paper-title">4dsu</h2>
+                <p class="linear-paper-subtitle">Estudiant d'Enginyeria de Telecomunicacions</p>
+              </div>
+              <span class="linear-stamp" aria-hidden="true">CONSULTA // EN REVISIÓ</span>
+            </div>
+            
+            <p class="linear-paper-summary">Sóc estudiant d'enginyeria de telecomunicacions. M'apassiona entendre com funcionen les coses a fons: des del maquinari i les xarxes fins al programari eficient i les eines personals.</p>
+
+            <hr class="linear-paper-rule" />
+
+            <div class="linear-paper-section">
+              <h3 class="linear-paper-heading">Formació Acadèmica</h3>
+              <div class="linear-paper-entries">
+                
+                  <div class="linear-edu-item">
+                    <div class="linear-edu-top">
+                      <strong class="linear-degree-name">Grau en Enginyeria de Tecnologies i Serveis de Telecomunicació</strong>
+                      <span class="linear-period-tag">En curs</span>
+                    </div>
+                    
+                    <p class="linear-edu-desc">Telemàtica, processament de senyals, sistemes de transmissió, xarxes IP i arquitectura de computadors.</p>
+                  </div>
+                
+              </div>
+            </div>
+
+            <hr class="linear-paper-rule" />
+
+            <div class="linear-paper-section">
+              <h3 class="linear-paper-heading">Competències Tècniques</h3>
+              <div class="linear-skills-grid">
+                
+                  <div class="linear-skill-box">
+                    <h4 class="linear-skill-category">Telecomunicacions</h4>
+                    <ul class="linear-skill-list">
+                      <li>TCP/IP</li><li>Senyals</li><li>Transmissió</li><li>Xarxes</li>
+                    </ul>
+                  </div>
+                
+                  <div class="linear-skill-box">
+                    <h4 class="linear-skill-category">Programació en C i sistemes</h4>
+                    <ul class="linear-skill-list">
+                      <li>C</li><li>Linux</li><li>POSIX</li><li>Memòria</li>
+                    </ul>
+                  </div>
+                
+                  <div class="linear-skill-box">
+                    <h4 class="linear-skill-category">Eines i productivitat</h4>
+                    <ul class="linear-skill-list">
+                      <li>Tooling</li><li>Automatització</li><li>CLI</li><li>Interfícies</li>
+                    </ul>
+                  </div>
+                
+              </div>
+            </div>
+
+            <div class="linear-paper-footer">
+              <p class="linear-paper-note">Resum en pantalla, fet amb el mateix contingut que la web 4dsu.me. No hi ha cap versió per descarregar.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Notes -->
+        <section id="linear-notes" class="linear-section linear-sys-panel" aria-labelledby="linear-notes-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">NOTES.TXT</span>
+            <span class="linear-panel-meta">2 APUNTS REGISTRATS</span>
+          </div>
+          <div class="linear-panel-body">
+            <div class="linear-section-title-wrap">
+              <h2 id="linear-notes-title" class="linear-section-title">NOTES.TXT — Notes</h2>
+              <p class="linear-lead-role">Notes breus sobre enginyeria, programació i eines.</p>
+            </div>
+
+            <div class="linear-notes-stack">
+              
+                <article class="linear-note-entry">
+                  <div class="linear-note-header">
+                    <time class="sys-timestamp">[2026-09-01]</time>
+                    <h3 class="linear-note-title">Per què una interfície de sistema retro?</h3>
+                  </div>
+                  <p class="linear-note-content">Un portfolio ha de presentar el contingut de manera clara, però també pot oferir una petita sensació de descobriment. La metàfora del microordinador domèstic permet organitzar la informació en fitxers i aplicacions sense amagar res important.</p>
+                </article>
+              
+                <article class="linear-note-entry">
+                  <div class="linear-note-header">
+                    <time class="sys-timestamp">[2026-08-01]</time>
+                    <h3 class="linear-note-title">L'aprenentatge proper al maquinari</h3>
+                  </div>
+                  <p class="linear-note-content">Treballar amb llenguatges com C i gestionar la memòria a mà fa comprendre millor els costos reals de les abstraccions que utilitzem cada dia en capes superiors.</p>
+                </article>
+              
+            </div>
+          </div>
+        </section>
+
+        <!-- Contacte -->
+        <section id="linear-contact" class="linear-section linear-sys-panel" aria-labelledby="linear-contact-title">
+          <div class="linear-panel-header">
+            <span class="linear-sys-badge">CONTACT.EXE</span>
+            <span class="linear-panel-meta">CANALS DE CONTACTE</span>
+          </div>
+          <div class="linear-panel-body">
+            <div class="linear-section-title-wrap">
+              <h2 id="linear-contact-title" class="linear-section-title">CONTACT.EXE — Contacte</h2>
+              <p class="linear-lead-role">De moment, l'únic canal públic és GitHub (github.com/janadsuar). Encara no hi ha cap adreça de correu pública.</p>
+              
+            </div>
+
+            <div class="linear-contact-grid">
+              
+                <div class="linear-contact-card">
+                  <div class="linear-contact-icon" aria-hidden="true"><svg class="sys-icon" viewBox="0 0 16 16" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M5 4H3v2H1v4h2v2h2v-2H3V6h2V4zm6 0h2v2h2v4h-2v2h-2v-2h2V6h-2V4zm-3 0h2l-2 8H6l2-8z"/></svg></div>
+                  <div class="linear-contact-body">
+                    <span class="linear-contact-label">GitHub</span>
+                    
+                      <a href="https://github.com/janadsuar" class="linear-contact-value" target="_blank" rel="noopener noreferrer">
+                        github.com/janadsuar
+                      </a>
+                    
+                    
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="linear-footer" role="contentinfo">
+      <div class="linear-container linear-footer-content">
+        <p>© 2026 4dsu.me — 4dsu OS v1.1</p>
+        <div class="linear-footer-links">
+          <a href="#linear-welcome">Pujar a l'inici ↑</a>
+          <button type="button" class="btn-link btn-switch-desktop">Canviar a l'escriptori interactiu</button>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- /os-dades:vista-lineal -->
+  </div>
+</body>
+</html>
